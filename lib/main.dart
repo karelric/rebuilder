@@ -7,8 +7,13 @@ import 'package:rebuilder/src/waiting_page.dart';
 
 void main() {
   runApp(Rebuilder(
+    /// create a widget to display while rebuilder is waiting for [builder].
     waiting: (_) => App(child: WaitingPage()),
+
+    /// create a widget to display if [builder] throw any error.
     errorBuilder: (_, error) => App(child: ErrorPage(error)),
+
+    /// initialize your app and build the first page wrapped by your app widget.
     builder: (_, child) async {
       /// TODO: here you can initialize your services
       await Future.delayed(Duration(seconds: 3));

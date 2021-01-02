@@ -6,12 +6,16 @@ typedef ErrorBuilder = Widget Function(BuildContext context, Object error);
 typedef Builder = FutureOr<Widget> Function(BuildContext context, Widget child);
 
 class Rebuilder extends StatefulWidget {
+  /// called when while is waiting for [builder].
   final WidgetBuilder waiting;
 
+  /// called when [builder] throw an error.
   final ErrorBuilder errorBuilder;
 
+  /// called on [initState] or [Rebuilder.of(context).rebuild()].
   final Builder builder;
 
+  /// use child for part of your widget with no need to be rebuilded.
   final Widget child;
 
   Rebuilder({
